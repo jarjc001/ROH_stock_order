@@ -1,3 +1,7 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
 #ignore venv
 venv/
 
@@ -5,7 +9,7 @@ venv/
 ROH/login_info.py
 
 #ignore data_export 
-data_export/
+# data_export/
 
 #ignore csv
 *.csv
