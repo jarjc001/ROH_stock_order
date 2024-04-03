@@ -6,6 +6,12 @@ from .file_dates import *
 
 
 def run(playwright: Playwright, filelocation: str) -> None:
+    """
+    downloads the csv of the wine order list, can do today or tomorrow
+    :param playwright:
+    :param filelocation:
+    :return:
+    """
     browser = playwright.chromium.launch(headless=False)
     context = browser.new_context()
     page = context.new_page()
@@ -15,16 +21,19 @@ def run(playwright: Playwright, filelocation: str) -> None:
     page.get_by_placeholder("you@domain.com").fill(USERNAME)
     page.get_by_label("Password").fill(PASSWORD)
     page.get_by_role("button", name="Log In").click()
-    page.wait_for_load_state("networkidle")
+
     #
     #
     # page.locator("#datepicker-txt").click()
     # page.locator("#datepicker-txt").fill("Wednesday, 7 March 2024")
     # page.locator("#datepicker-txt").press("Enter")
 
-    page.get_by_role("link", name="Tomorrow").click()
+    if for_tomorrow:
+        page.wait_for_load_state("networkidle")
+        page.get_by_role("link", name="Tomorrow").click()
+        page.wait_for_load_state("networkidle")
 
-    page.wait_for_load_state("networkidle")
+
     with page.expect_download() as download_info:
         page.get_by_role("link", name="Export as CSV").click()
     download = download_info.value

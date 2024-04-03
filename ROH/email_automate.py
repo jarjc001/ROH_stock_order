@@ -5,6 +5,12 @@ from .file_dates import *
 
 
 def create_email(wine_order: str) -> None:
+    """
+    creates an email containing pre order list, will send to AUTOMATE_EMAIL
+    will also cc to additional emails
+    :param wine_order: wine order str
+    :return:
+    """
     if wine_order == "":
         return
 
@@ -17,19 +23,17 @@ def create_email(wine_order: str) -> None:
     s.login(AUTOMATE_EMAIL, AUTOMATE_EMAIL_PASSWORD)
 
     # message to be sent
-    message_subject: str = f'Crush cellar order {tomorrow.strftime(date_format_full)}'
+    message_subject: str = f'Crush cellar order {date_of_order.strftime(date_format_full)}'
     message_content_start: str = (f"Hey,\n\nCan I order these for crush and"
-                                  f" dorfman for the {tomorrow.strftime(date_format_day)}{suffix(tomorrow.day)} please :)\n\n")
-
-    message_content_end: str = "\n\n\n\nChristian Jarjat"
+                                  f" dorfman for the {date_of_order.strftime(date_format_day)}{suffix(date_of_order.day)} please :)\n\n")
 
     msg = EmailMessage()
-    msg.set_content(message_content_start + wine_order + message_content_end)
+    msg.set_content(message_content_start + wine_order)
 
     msg['Subject'] = message_subject
     msg['From'] = AUTOMATE_EMAIL
     msg["To"] = AUTOMATE_EMAIL
-    msg["cc"] = ["jarjatc@gmail.com", "theonebatman1999@gmail.com"]
+    msg["cc"] = ["", ""]
 
     s.send_message(msg)
 
