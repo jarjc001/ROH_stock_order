@@ -25,11 +25,15 @@ def get_list_of_orders() -> list:
     # df of csv
     df = pd.read_csv(FILE_LOCATION + "/" + file_name)
 
+    # if len(df.index) == 0:
+    #     return []
+
+
     # output list
     order_list = []
 
     for stings in df['Pre-order']:
-        if stings is np.nan:
+        if stings is np.nan or None:
             continue
         list_str: list = stings.split("\n")
         wine_filter_list_str: list = list(filter(lambda x: x.find("Bin") != -1, list_str))

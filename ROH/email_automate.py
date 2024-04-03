@@ -5,6 +5,9 @@ from .file_dates import *
 
 
 def create_email(wine_order: str) -> None:
+    if wine_order == "":
+        return
+
     # creates SMTP session
     s = smtplib.SMTP('smtp.gmail.com', 587)
     s.ehlo()
@@ -26,6 +29,7 @@ def create_email(wine_order: str) -> None:
     msg['Subject'] = message_subject
     msg['From'] = AUTOMATE_EMAIL
     msg["To"] = AUTOMATE_EMAIL
+    msg["cc"] = ["jarjatc@gmail.com", "theonebatman1999@gmail.com"]
 
     s.send_message(msg)
 
