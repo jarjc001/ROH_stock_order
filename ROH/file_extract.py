@@ -5,6 +5,10 @@ from .login_info import *
 from .file_dates import *
 
 
+def create_data_export_dir(file_location: str)-> None:
+    if not os.path.exists(file_location):
+        os.makedirs(file_location)
+
 def delete_all_csv_fies() -> None:
     """
     deletes all csv files in the FILE_LOCATION folder

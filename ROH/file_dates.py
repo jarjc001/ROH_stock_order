@@ -4,7 +4,7 @@ today: dt.datetime = dt.datetime.today()
 tomorrow: dt.datetime = today + dt.timedelta(days=1)
 
 # value to change if script will collect for today or tomorrow's order
-for_tomorrow: bool = True
+for_tomorrow: bool = False
 
 # date of order being collected
 date_of_order: dt.datetime
@@ -18,7 +18,6 @@ date_format_full: str = "%d.%m.%y"
 date_format_day: str = "%d"
 
 file_name: str = f"RunningOrderReport-{date_of_order.strftime(date_format_full)}.csv"
-
 
 
 def suffix(d):

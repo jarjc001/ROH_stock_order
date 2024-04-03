@@ -28,9 +28,9 @@ def run(playwright: Playwright, filelocation: str) -> None:
     # page.locator("#datepicker-txt").press("Enter")
 
     if for_tomorrow:
-        page.wait_for_load_state("networkidle")
+        #page.wait_for_load_state("networkidle")
         page.get_by_role("link", name="Tomorrow").click()
-        page.wait_for_load_state("networkidle")
+        #page.wait_for_load_state("networkidle")
 
     with page.expect_download() as download_info:
         page.get_by_role("link", name="Export as CSV").click()
