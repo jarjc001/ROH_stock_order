@@ -9,3 +9,7 @@ data_export/
 
 #ignore csv
 *.csv
+
+#ignore one file builds
+ROHPreorderStockTomorrow.py
+ROHPreorderStockToday.py
