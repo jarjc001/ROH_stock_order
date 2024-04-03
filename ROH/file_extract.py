@@ -1,5 +1,5 @@
 import pandas as pd
-import numpy as np
+from numpy import nan
 
 from .login_info import *
 from .file_dates import *
@@ -50,7 +50,7 @@ def get_list_of_orders() -> list:
     order_list = []
 
     for stings in df['Pre-order']:
-        if stings is np.nan or None:
+        if stings is nan or None:
             continue
         list_str: list = stings.split("\n")
         wine_filter_list_str: list = list(filter(lambda x: x.find("Bin") != -1, list_str))
