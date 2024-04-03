@@ -1,8 +1,7 @@
 from playwright.sync_api import Playwright
+
 from .login_info import *
 from .file_dates import *
-
-
 
 
 def run(playwright: Playwright, filelocation: str) -> None:
@@ -15,7 +14,7 @@ def run(playwright: Playwright, filelocation: str) -> None:
     browser = playwright.chromium.launch(headless=False)
     context = browser.new_context()
     page = context.new_page()
-    #page.goto("https://resdiary.com/")
+    # page.goto("https://resdiary.com/")
     page.goto("https://resdiary.com/?region=GB")
     page.locator("#hs_cos_wrapper_Navbar_with_Menu").get_by_role("link", name="Login").click()
     page.get_by_placeholder("you@domain.com").fill(USERNAME)
@@ -32,7 +31,6 @@ def run(playwright: Playwright, filelocation: str) -> None:
         page.wait_for_load_state("networkidle")
         page.get_by_role("link", name="Tomorrow").click()
         page.wait_for_load_state("networkidle")
-
 
     with page.expect_download() as download_info:
         page.get_by_role("link", name="Export as CSV").click()
