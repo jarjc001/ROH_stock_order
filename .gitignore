@@ -2,7 +2,7 @@
 venv/
 
 #ignore db constant file
-ROH/login_info.py
+#ROH/login_info.py
 
 #ignore data_export 
 data_export/

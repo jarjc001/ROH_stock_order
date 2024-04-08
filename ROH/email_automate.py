@@ -34,7 +34,7 @@ def create_email(wine_order: str) -> None:
     msg['Subject'] = message_subject
     msg['From'] = AUTOMATE_EMAIL
     msg["To"] = AUTOMATE_EMAIL
-    msg["cc"] = ["", ""]
+    msg["cc"] = SEND_TO_EMAIL
 
     s.send_message(msg)
 

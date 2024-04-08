@@ -1,5 +1,8 @@
 from playwright.sync_api import Playwright
 
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+
 from .login_info import *
 from .file_dates import *
 
@@ -41,3 +44,14 @@ def run(playwright: Playwright, filelocation: str) -> None:
     # ---------------------
     context.close()
     browser.close()
+
+
+# driver = webdriver.Chrome('./chromedriver')
+# driver.get("https://www.python.org")
+# print(driver.title)
+# search_bar = driver.find_element_by_name("q")
+# search_bar.clear()
+# search_bar.send_keys("getting started with python")
+# search_bar.send_keys(Keys.RETURN)
+# print(driver.current_url)
+# driver.close()
