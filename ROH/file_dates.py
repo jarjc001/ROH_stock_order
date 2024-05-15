@@ -4,7 +4,7 @@ today: dt.datetime = dt.datetime.today()
 tomorrow: dt.datetime = today + dt.timedelta(days=1)
 
 # value to change if script will collect for today or tomorrow's order
-for_tomorrow: bool = False
+for_tomorrow: bool = True
 
 # date of order being collected
 date_of_order: dt.datetime
